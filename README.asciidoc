@@ -1,0 +1,16 @@
+= libkinect =
+
+By Kyle Machulis
+
+http://www.nonpolynomial.com
+
+== Description ==
+
+libkinect will be a cross platform driver library for the Microsoft Kinect camera. However, the hardware has been out for the public for about 14 hours as of this writing, so we've got a ways to go. Until something substantial happens, this document will serve more as an update system than an actual readme, but I'm just taking advantage of github's repo autoformatting here. For larger documentation, USB packet dumps, etc, check the doc directory.
+
+== Reverse Engineering Ideas ==
+
+- The thing we always start with: lsusb -vvv
+- Are there any other usb microsoft webcams/microphones out there? Can V4L already see parts of this?
+- First person to a USB analyzer wins, especially on the servo, as it most likely isn't happening without a packet dump.
+
