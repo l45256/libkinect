@@ -8,18 +8,10 @@ http://www.nonpolynomial.com
 
 libkinect will be a cross platform driver library for the Microsoft Kinect camera. However, the hardware has been out for the public for about 14 hours as of this writing, so we've got a ways to go. Until something substantial happens, this document will serve more as an update system than an actual readme, but I'm just taking advantage of github's repo autoformatting here. For larger documentation, USB packet dumps, etc, check the doc directory.
 
-== Reverse Engineering Ideas ==
+== Information ==
 
-- The thing we always start with: lsusb -vvv
-- Are there any other usb microsoft webcams/microphones out there? Can V4L already see parts of this?
-- First person to a USB analyzer wins, especially on the servo, as it most likely isn't happening without a packet dump.
+Until more code is being written, information about who's doing what will be available at
 
-- Wedging - Let's assume for a minute that hardware divisions of microsoft actually talk to each other and share designs. Having worked there, I'd really question this, but you never know. They might have the circuit and fab line set up already that replicating what they've already got would be cheap and fast, so they might've reused the design. Anyways, we know the VID/PID pairs of a few different webcams from MS, and we're mainly interested in their newer series, i.e. the LifeCam. Using V4L or macam (depending on your platform), add the VID/PID pair of the camera (0x045e/0x02ae) as a subset of the lifecam stuff, see if we can read out the RGB that way. 
-- Lots of chips just put out JPEG these days, and from the vision side we really don't care about lossiness in the RGB, since the fun here is the IR. So, we may just receieve JPEG compressed frames from whichever endpoint the RGB camera is on the camera device. However, for the IR camera, lossiness would be a huge issue, so that format will most likely be lossless, and may be proprietary. Without being able to do a software based man-in-the-middle attack (no windows drivers available right now, otherwise most of this would be a solved problem, thank you IDA Pro), this one might be a bitch to take apart.
-- Worst case, the "Emotiv" scenario: encrypted stream. I so doubt this will happen, as Emotiv have been the only company asshole-ish enough to do that in consumer sold HID equipment in the 6 years I've been at this. However, with MS's new 'threat' after the adafruit bounty, who fucking knows.
-- I had work today, have got classes tonight, and a conference all weekend, so I may not get to work on this much before sunday evening. I can only hope other people will post their information, though I fear that may not happen due to the whole Xprize thing. Please update me if you do and I'll put it in this doc. Godspeed your camera hacking, everyone. May the cause of IR based genitalia detection remain free. 
+https://github.com/qdot/libkinect/wiki
 
-== URLs ==
 
-- http://www.ifixit.com/Teardown/Microsoft-Kinect-Teardown/4066/ - ifixit Teardown
-- http://hackaday.com/2010/11/04/kilobuck-open-kinect-project-prize/ - Hackaday article on the bounty, semi-useful comment thread
